@@ -27,7 +27,8 @@ namespace StringMethods
         private static string cümleGir()
         {
             Console.WriteLine("Bir cümle giriniz:");
-            return Console.ReadLine();
+            var result = Console.ReadLine();
+            return result.ToUpper();
         }
 
         private static void secilenİslemiYap(string secilenMetot)
@@ -44,7 +45,7 @@ namespace StringMethods
                     ındexOfYap();
                     break;
                 case "4":
-                    lastIndexOfAnyYap();
+                    lastIndexOfYap();
                     break;
                 case "5":
                     substringYap();
@@ -60,9 +61,10 @@ namespace StringMethods
             Console.WriteLine(result.Substring(2,2));
         }
 
-        private static void lastIndexOfAnyYap()
+        private static void lastIndexOfYap()
         {
             var result = cümleGir();
+            Console.WriteLine(result.LastIndexOf("serdar"));
         }
 
         private static void ındexOfYap()
@@ -85,7 +87,7 @@ namespace StringMethods
             Console.WriteLine("1. Contains");
             Console.WriteLine("2. StartsWith");
             Console.WriteLine("3. IndexOf");
-            Console.WriteLine("4. LastIndexOfAny");
+            Console.WriteLine("4. LastIndexOf");
             Console.WriteLine("5. Substring");
         }
     }
