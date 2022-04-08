@@ -11,7 +11,6 @@ namespace StringMethods
     {
         static void Main(string[] args)
         {
-
             string secilenMetot = string.Empty;
             do
             {
@@ -30,7 +29,12 @@ namespace StringMethods
             var result = Console.ReadLine();
             return result.ToUpper();
         }
-
+        private static string aranıcakHarf()
+        {
+            Console.WriteLine("Aramak istediğiniz harfi giriniz:");
+            var harf = Console.ReadLine().ToUpper();
+            return harf;
+        }
         private static void secilenİslemiYap(string secilenMetot)
         {
             switch (secilenMetot)
@@ -58,28 +62,54 @@ namespace StringMethods
         private static void substringYap()
         {
             var result = cümleGir();
-            Console.WriteLine(result.Substring(2,2));
+            Console.WriteLine(result.Substring(2, 2));
         }
 
+        //Aramak istediğimiz harfi girip istersek başlamak istediğimiz indexi de girip o indexten başlayıp yazılan kelimenin içinde o harfi aramaya başlar. Aramaya sondan başlar ve aradığımız harfi ilk bulduğunda durur.
         private static void lastIndexOfYap()
         {
             var result = cümleGir();
-            Console.WriteLine(result.LastIndexOf("serdar"));
+            aranıcakHarf();
+            Console.WriteLine(result.LastIndexOf(aranıcakHarf()));
         }
-
+        //Aramak istediğimiz harfi girip istersek başlamak istediğimiz indexi de girip o indexten başlayıp yazılan kelimenin içinde o harfi aramaya başlar. Aramaya baştan başlar ve aradığımız harfi ilk bulduğunda durur.
         private static void ındexOfYap()
         {
-            throw new NotImplementedException();
+            var result = cümleGir();
+            aranıcakHarf();
+            Console.WriteLine("Başlamak istdiğiniz indexi giriniz:");
+            int index = Convert.ToInt32((Console.ReadLine()));
+            Console.WriteLine(result.IndexOf(aranıcakHarf(), index));
         }
-
+        //Yazdığımız kelime gireceğimiz harf ile başlıyor mu diye bool döndürmeye yarayan bir metot.
         private static void startsWithYap()
         {
-            throw new NotImplementedException();
+            var result = cümleGir();
+            var gelenHarf = aranıcakHarf();
+            bool sonuc = result.StartsWith(gelenHarf);
+            if (sonuc == true)
+            {
+                Console.WriteLine($"Kelimeniz {gelenHarf} harfi ile başlıyor!!");
+            }
+            else
+            {
+                Console.WriteLine($"Kelimeniz {gelenHarf} harfi ile başlamıyor!!");
+            }
         }
-
+        //Yazdığımız kelimenin içerisinde gireceğimiz harf geçiyor mu diye aramaya yarayan metot.
         private static void containsYap()
         {
-            throw new NotImplementedException();
+            var result = cümleGir();
+            var gelenHarf = aranıcakHarf();
+            bool sonuc = result.Contains(gelenHarf);
+            if (sonuc == true)
+            {
+                Console.WriteLine($"Kelimenizin içinde {gelenHarf} harfi bulunmaktadır!!");
+            }
+            else
+            {
+                Console.WriteLine($"Kelimeniz {gelenHarf} harfi bulunmamaktadır!!");
+            }
         }
 
         private static void menüyüGöster()
